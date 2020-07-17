@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="stylesheet" href="css.css" />
+    <title>Intefaz</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="wrapper">
+        <div id="header">
+          <h1>{{title}}</h1>
+          <div id="add">
+            <input
+              v-model="newToDo"
+              type="text"
+              placeholder="Tu nueva tarea aquí"
+              @keyup.enter="addToDo"
+            />
+            <button @click="addToDo" type="button">Añadir</button>
+          </div>
+        </div>
+        <div id="cards">
+          <ul>
+            <li
+              v-for="(item, index) of todo"
+              :class="[item.state ? 'li_true' : 'li_false']"
+            >
+              <span id="activity"
+                ><div class="icon">🐶</div>
+                {{item.name}}</span
+              >
+              <div id="actions">
+                <button class="container_checkbox" @click="chageState(index)">
+                  ✔️
+                </button>
+                <button class="delete" @click="deleteToDo(index)">✖</button>
+              </div>
+            </li>
+            <li class="li_false">
+              <span id="activity"
+                ><div class="icon">🥰</div>
+                Decirle a tu amorcito que lo amas.</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>Con mucho ❤️ para ti.</footer>
+    </div>
+    <script src="as/vue.js"></script>
+    <script src="js.js"></script>
+  </body>
+</html>
